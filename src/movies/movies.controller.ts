@@ -42,8 +42,20 @@ export class MoviesController {
   @ApiOperation({
     summary: 'see the selection of movie',
   })
+  @ApiOkResponse({ description: 'Retrieved movie successfully', type: [Movie] })
   getMovies() {
     return this.moviesService.getMovies();
+  }
+
+  @Get('/history')
+  @ApiNoContentResponse({ description: 'no search' })
+  @ApiNotFoundResponse({ description: 'no history' })
+  @ApiOperation({
+    summary: 'Get search history',
+  })
+  getSearchHistory() {
+    const history = this.moviesService.getHistory();
+    return history;
   }
 
   @Get('/search/:title')
@@ -129,14 +141,6 @@ export class MoviesController {
     if (!deletedMovie) {
       throw new NotFoundException('Movie not found');
     }
-  }
-
-  @Get('seeHistory')
-  @ApiOperation({
-    summary: 'Get search history',
-  })
-  getSearchHistory() {
-    return this.moviesService.getHistory();
   }
 
   @Get('rank/:order')
