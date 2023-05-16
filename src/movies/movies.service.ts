@@ -24,7 +24,7 @@ export class MoviesService {
 
       return results.Search;
     } catch (e) {
-      console.log('error', e);
+      return `error ${e}`;
     }
   }
 
@@ -39,9 +39,9 @@ export class MoviesService {
       );
       const result = await res.json();
       if (result?.Response === 'False') throw new Error(result.Error);
-      const { Title, Poster, Type, Year } = result;
+      const { Title, Poster, Type, Year, Id } = result;
       this.movies.push({
-        Id: result.imdbID,
+        Id: Id || result.imdbID,
         Title,
         Poster,
         Type,
@@ -57,11 +57,9 @@ export class MoviesService {
   }
 
   getMovieById(id: string): Movie {
-    try {
-      return this.movies.find((movie) => movie.Id === id);
-    } catch {
-      throw new NotFoundException('Movie not found');
-    }
+    const foundId = this.movies.find((movie) => movie.Id === id);
+    if (!foundId) throw new NotFoundException('Movie not found');
+    return this.movies.find((movie) => movie.Id === id);
   }
 
   getMovies(): Movie[] {

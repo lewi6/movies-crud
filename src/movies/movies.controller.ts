@@ -10,15 +10,28 @@ import {
 } from '@nestjs/common';
 import {
   ApiBadRequestResponse,
+  ApiBody,
+  ApiConsumes,
   ApiNoContentResponse,
   ApiNotFoundResponse,
   ApiOkResponse,
   ApiOperation,
   ApiParam,
+  ApiProperty,
   ApiTags,
 } from '@nestjs/swagger';
+
 import { Movie, Review } from './movies.model';
 import { MoviesService } from './movies.service';
+
+//this just for swagger to capture json schema for Review
+class ReviewSchema {
+  @ApiProperty()
+  comment: string;
+
+  @ApiProperty()
+  rating: number;
+}
 
 @ApiTags('movies')
 @Controller('movies')
@@ -71,6 +84,8 @@ export class MoviesController {
   })
   @ApiOkResponse({ description: 'Review added successfully', type: Movie })
   @ApiNotFoundResponse({ description: 'Movie not found' })
+  @ApiConsumes('application/json')
+  @ApiBody({ type: ReviewSchema })
   addReview(@Param('id') movieId: string, @Body() review: Review): Movie {
     return this.moviesService.addReview(movieId, review);
   }
@@ -81,6 +96,7 @@ export class MoviesController {
   })
   @ApiOkResponse({ description: 'Review updated successfully', type: Movie })
   @ApiNotFoundResponse({ description: 'Movie or review not found' })
+  @ApiBody({ type: ReviewSchema })
   updateReview(
     @Param('id') movieId: string,
     @Param('reviewId') reviewId: string,

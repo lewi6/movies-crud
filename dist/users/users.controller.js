@@ -34,7 +34,7 @@ let UserController = class UserController {
 };
 __decorate([
     (0, common_1.Post)(),
-    (0, swagger_1.ApiOperation)({ summary: 'Create user again', description: 'you know' }),
+    (0, swagger_1.ApiOperation)({ summary: 'Create user again', description: 'insert user' }),
     openapi.ApiResponse({ status: 201, type: require("./users.model").User }),
     __param(0, (0, common_1.Body)('userObj')),
     __metadata("design:type", Function),
@@ -57,6 +57,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], UserController.prototype, "getUserById", null);
 UserController = __decorate([
+    (0, swagger_1.ApiTags)('movies'),
     (0, common_1.Controller)('users'),
     __metadata("design:paramtypes", [users_service_1.UsersService])
 ], UserController);

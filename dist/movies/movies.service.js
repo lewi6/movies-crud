@@ -36,9 +36,9 @@ let MoviesService = class MoviesService {
             const result = await res.json();
             if ((result === null || result === void 0 ? void 0 : result.Response) === 'False')
                 throw new Error(result.Error);
-            const { Title, Poster, Type, Year } = result;
+            const { Title, Poster, Type, Year, Id } = result;
             this.movies.push({
-                Id: result.imdbID,
+                Id: Id || result.imdbID,
                 Title,
                 Poster,
                 Type,
@@ -53,12 +53,10 @@ let MoviesService = class MoviesService {
         }
     }
     getMovieById(id) {
-        try {
-            return this.movies.find((movie) => movie.Id === id);
-        }
-        catch (_a) {
+        const foundId = this.movies.find((movie) => movie.Id === id);
+        if (!foundId)
             throw new common_1.NotFoundException('Movie not found');
-        }
+        return this.movies.find((movie) => movie.Id === id);
     }
     getMovies() {
         return this.movies;
