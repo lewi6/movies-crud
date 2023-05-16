@@ -18,6 +18,16 @@ const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
 const movies_model_1 = require("./movies.model");
 const movies_service_1 = require("./movies.service");
+class ReviewSchema {
+}
+__decorate([
+    (0, swagger_1.ApiProperty)(),
+    __metadata("design:type", String)
+], ReviewSchema.prototype, "comment", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)(),
+    __metadata("design:type", Number)
+], ReviewSchema.prototype, "rating", void 0);
 let MoviesController = class MoviesController {
     constructor(moviesService) {
         this.moviesService = moviesService;
@@ -114,6 +124,8 @@ __decorate([
     }),
     (0, swagger_1.ApiOkResponse)({ description: 'Review added successfully', type: movies_model_1.Movie }),
     (0, swagger_1.ApiNotFoundResponse)({ description: 'Movie not found' }),
+    (0, swagger_1.ApiConsumes)('application/json'),
+    (0, swagger_1.ApiBody)({ type: ReviewSchema }),
     openapi.ApiResponse({ status: 201, type: require("./movies.model").Movie }),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
@@ -128,6 +140,7 @@ __decorate([
     }),
     (0, swagger_1.ApiOkResponse)({ description: 'Review updated successfully', type: movies_model_1.Movie }),
     (0, swagger_1.ApiNotFoundResponse)({ description: 'Movie or review not found' }),
+    (0, swagger_1.ApiBody)({ type: ReviewSchema }),
     openapi.ApiResponse({ status: 200, type: require("./movies.model").Movie }),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Param)('reviewId')),

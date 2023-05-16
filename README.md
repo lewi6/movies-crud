@@ -48,6 +48,14 @@ $ npm run start:prod
 ## Test
 
 ```bash
+
+#test for the movies endpoint only
+npm run dev:watch
+
+enter p
+
+movies/movies.controller.spec.ts
+
 # unit tests
 $ npm run test
 
@@ -56,6 +64,7 @@ $ npm run test:e2e
 
 # test coverage
 $ npm run test:cov
+
 ```
 
 ## Support
