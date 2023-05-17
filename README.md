@@ -22,12 +22,25 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
+## Description of the (BASIC) workflow
+
+```
+
+1. Search for a movie by title and copy the Id of the movie you want
+
+2. Add the movie to my selection by putting the Id in the POST: /movies/{id}
+
+3. See the list of movies selection via GET: /movies
+
+```
 
 ## Swagger
 
 ```
 https://movies-crud-khaki.vercel.app/api/
 ```
+
+- Swagger UI - [@Api](https://movies-crud-khaki.vercel.app/api/)
 
 ## Installation
 
