@@ -3,13 +3,13 @@ import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { userInput } from './users.model';
 import { UsersService } from './users.service';
 
-@ApiTags('movies')
+@ApiTags('users')
 @Controller('users')
 export class UserController {
   constructor(private readonly userService: UsersService) {}
 
   @Post()
-  @ApiOperation({ summary: 'Create user again', description: 'insert user' })
+  @ApiOperation({ summary: 'Create user', description: 'insert user' })
   insertUser(@Body('userObj') userObj: userInput) {
     const user = this.userService.insertUser(userObj);
     return user;
