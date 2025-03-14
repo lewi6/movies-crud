@@ -8,13 +8,21 @@ import { AppModule } from './app.module';
 // import * as express from 'express';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, {
+    logger: ['error', 'warn', 'log', 'debug', 'verbose'],
+  });
 
   // Enable CORS with a simpler configuration
   app.enableCors({
     origin: '*',
-    methods: '*',
-    allowedHeaders: '*',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    allowedHeaders: [
+      'Content-Type',
+      'Accept',
+      'Authorization',
+      'X-Requested-With',
+    ],
+    credentials: false,
   });
 
   const config = new DocumentBuilder()
