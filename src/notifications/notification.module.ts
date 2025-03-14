@@ -4,8 +4,8 @@ import * as webPush from 'web-push';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { PushNotificationsController } from './notification.controller';
 import { PushNotificationsService } from './notifications.service';
-import { SupabaseService } from 'src/supabase/supabase.service';
-import { SupabaseModule } from 'src/supabase/supabase.module';
+import { SupabaseService } from '../supabase/supabase.service';
+import { SupabaseModule } from '../supabase/supabase.module';
 import { VAPID } from './notification.constants';
 
 @Module({

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { User, CreateUserDto, ClientDto, LoginDto } from './users.model';
 import { v4 as uuid } from 'uuid';
-import { SupabaseService } from 'src/supabase/supabase.service';
+import { SupabaseService } from '../supabase/supabase.service';
 
 @Injectable()
 export class UsersService {
