@@ -26,12 +26,14 @@
     "@nestjs/platform-express": "^9.0.0",
     "@nestjs/serve-static": "^3.0.1",
     "@nestjs/swagger": "^6.3.0",
+    "@supabase/supabase-js": "^2.49.1",
     "axios": "^1.4.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.2.0",
     "serve-static": "^1.15.0",
     "swagger-ui-express": "^4.6.3",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "web-push": "^3.6.7"
   },
   "devDependencies": {
     "@nestjs/cli": "^9.0.0",
