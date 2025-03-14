@@ -15,7 +15,13 @@ async function bootstrap() {
     origin: ['https://dev-lucide-causal.vercel.app', 'http://localhost:5173'],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     credentials: true,
-    allowedHeaders: 'Content-Type, Accept, Authorization',
+    allowedHeaders: [
+      'Content-Type',
+      'Accept',
+      'Authorization',
+      'X-Requested-With',
+    ],
+    exposedHeaders: ['Content-Range', 'X-Content-Range'],
   });
 
   const config = new DocumentBuilder()
