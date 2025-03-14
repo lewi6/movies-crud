@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@nestjs/common';
 import * as webPush from 'web-push';
 
 import { VAPID } from './notification.constants';
-import { SupabaseService } from 'src/supabase/supabase.service';
+import { SupabaseService } from '../supabase/supabase.service';
 
 @Injectable()
 export class PushNotificationsService {
